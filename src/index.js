@@ -38,6 +38,25 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
+    var answer = '';
+    for (let i = 0; i < expr.length; i += 10) {
+        if (expr[i] === '*') {
+            answer += ' ';
+            continue;  }
+        var char = '';
+        for (let j = i; j < i + 10; j += 2) {       
+          switch (expr.slice(j, j + 2)) {
+                case '11': char += '-';
+                    break; 
+                case '10': char += '.';
+                    break;
+                default:
+                    break;    }            
+        }                
+     answer += MORSE_TABLE[char];
+    }
+
+    return answer;
     // write your solution here
 }
 
